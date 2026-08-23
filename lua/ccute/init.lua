@@ -148,13 +148,14 @@ M.defaults = {
     apply_range = "<Leader>cr",
     clear_range = "<Leader>CR"
   },
+  lazy = false
 }
 
 function M.setup(opts)
   opts = vim.tbl_deep_extend("force", M.defaults, opts or {})
 
   require'ccute.keymaps'.setup(opts.keymaps)
-  require'ccute.commands'.setup()
+  require'ccute.commands'.setup(opts)
 end
 
 return M

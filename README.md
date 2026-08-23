@@ -2,6 +2,7 @@
 
 - Support the code formats: HEX, RGB, HSL. More formats are planned.
 - Apply/clear on any line or range of lines using keymaps.
+- Lazy mode: highlights refresh only on file save.
 
 ## Installation
 
@@ -44,5 +45,7 @@ require('ccute').setup({
     apply_range = '<Leader>cr', -- apply to a range of lines.
     clear_range = '<Leader>CR' -- clear from a range of lines.
   },
+
+  lazy = false -- set to true to enable lazy mode
 })
 ```

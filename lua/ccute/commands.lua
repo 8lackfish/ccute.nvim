@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.setup(opts)
 
   local ccuteActive = false
   local attachedBufs = {}
@@ -22,6 +22,20 @@ function M.setup()
       triggeredBufs = {}
     end
   end, {})
+
+  vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufWritePost" }, { -- trigger
+    callback = function(args)
+      if not ccuteActive then return end
+      local bufnr = args.buf
+      if args.event ~= "BufWritePost" then
+        if triggeredBufs[bufnr] then return end
+        triggeredBufs[bufnr] = true
+      end
+      require'ccute'.linear()
+    end
+  })
+
+  if opts.lazy then return end
 
   local function attach(bufnr) -- buffer tracking (register on_lines callback)
     if attachedBufs[bufnr] then return end
@@ -54,18 +68,6 @@ function M.setup()
     callback = function(args)
       attach(args.buf)
     end,
-  })
-
-  vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "BufWritePost" }, { -- trigger
-    callback = function(args)
-      if not ccuteActive then return end
-      local bufnr = args.buf
-      if args.event ~= "BufWritePost" then
-        if triggeredBufs[bufnr] then return end
-        triggeredBufs[bufnr] = true
-      end
-      require'ccute'.linear()
-    end
   })
 end
 
