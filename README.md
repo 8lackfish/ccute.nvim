@@ -39,7 +39,9 @@ vim.pack.add({
 ```lua
 require('ccute').setup({
   keymaps = {
-    -- Neovim uses '\' as <Leader> by default
+    -- Options use the same key notation as the `{lhs}` of `vim.keymap.set`.
+    -- `false` disables the default mapping.
+    -- Neovim uses `\` as <Leader> by default.
     apply_line = '<Leader>cc', -- apply to the current line.
     clear_line = '<Leader>CC', -- clear from the current line.
     apply_range = '<Leader>cr', -- apply to a range of lines.
