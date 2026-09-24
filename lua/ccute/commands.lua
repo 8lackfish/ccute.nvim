@@ -37,7 +37,7 @@ function M.setup(opts)
 
   if opts.lazy then return end
 
-  local function attach(bufnr) -- buffer tracking (register on_lines callback)
+  local function attach(bufnr) -- buffer monitoring (register on_lines callback)
     if attachedBufs[bufnr] then return end
 
     attachedBufs[bufnr] = true
