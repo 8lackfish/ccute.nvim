@@ -30,9 +30,9 @@ vim.pack.add({
 
 ### Commands
 
-| Command | Description |
-| --- | --- |
-| `Cute` | Enable or disable colorizing globally |
+| Command | Args | Description |
+| --- | --- | --- |
+| `Cute` | No args | Enable or disable colorizing globally (disabled by default) |
 
 ### Default configuration
 
