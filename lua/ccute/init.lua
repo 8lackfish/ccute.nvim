@@ -55,7 +55,11 @@ function M.apply(opts)
   opts.bufnr = opts.bufnr or 0
   opts.lnum = opts.lnum or ((opts.bufnr == 0) and vim.api.nvim_win_get_cursor(0)[1]) or 1
 
-  vim.api.nvim_buf_add_highlight(opts.bufnr, ccc_ns, group, opts.lnum - 1, opts.col - 1, opts.col - 1 + opts.len)
+  vim.api.nvim_buf_set_extmark(opts.bufnr, ccc_ns, opts.lnum - 1, opts.col - 1, {
+    end_col = opts.col - 1 + opts.len,
+    hl_group = group,
+})
+
 end
 
 ---Highlight color codes on the line.
