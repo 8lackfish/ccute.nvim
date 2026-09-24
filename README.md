@@ -32,7 +32,7 @@ vim.pack.add({
 
 | Command | Description |
 | --- | --- |
-| `Cute` | Enable or disable colorizing globally |
+| `Cute` | Enable or disable auto colorizing globally (disabled by default) |
 
 ### Default configuration
 
